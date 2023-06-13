@@ -7,3 +7,15 @@ before_install:
 
 script: 
   - docker run -e CI=true charowan/docker-react npm run test
+
+deploy: 
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "MyFirstAWSApp"
+  env: "MyFirstAWSApp-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-927662313617"
+  bucket_path: "MyFirstAWSApp"
+  on:
+    branch: main
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
